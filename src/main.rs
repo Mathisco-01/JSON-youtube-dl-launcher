@@ -1,13 +1,11 @@
+use rand::seq::SliceRandom;
 use std::fs::File;
 use std::io::prelude::*;
-use json;
-use rand;
-use rand::seq::SliceRandom;
 use std::process::Command;
 
 struct Channel {
-    fname: String,  // folder name
-    link: String,   // link to Youtube channel
+    fname: String, // folder name
+    link: String,  // link to Youtube channel
 }
 
 fn main() -> std::io::Result<()> {
@@ -45,38 +43,37 @@ fn parse_string(contents: String) -> Vec<Channel> {
         match parsed {
             Ok(parsed) => {
                 let ch = Channel {
-                    fname: String::from(parsed["fn"].to_string()),
-                    link: String::from(parsed["link"].to_string()),
+                    fname: parsed["fn"].to_string(),
+                    link: parsed["link"].to_string(),
                 };
 
                 // Add to channels vector
                 channels.push(ch);
-            },
+            }
             Err(error) => {
                 // If error is NOT Unexpected end of JSON then print the error
                 if error.to_string() != "Unexpected end of JSON" {
                     println!("{:?}", error);
                 }
-            },
+            }
         };
-    };
+    }
 
-    return channels;
-
+    channels
 }
 
 fn new_process(channel: Channel) {
     println!("Starting youtube-dl for: {}", channel.fname);
     let mut child = Command::new("youtube-dl")
-                            .arg("-f")
-                            .arg("best")
-                            .arg("-ciw")
-                            .arg("-o")
-                            .arg(format!("{}/%(title)s.%(ext)s", channel.fname))
-                            .arg("-v")
-                            .arg(channel.link)
-                            .spawn()
-                            .expect("failed to execute!");
+        .arg("-f")
+        .arg("best")
+        .arg("-ciw")
+        .arg("-o")
+        .arg(format!("{}/%(title)s.%(ext)s", channel.fname))
+        .arg("-v")
+        .arg(channel.link)
+        .spawn()
+        .expect("failed to execute!");
 
     child.wait().expect("failed to wait on child");
     println!("Child has finished its execution!");
