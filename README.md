@@ -5,8 +5,7 @@ Built to be executed by cron to repeatedly archive entire youtube channels.
 
 Make sure you have youtube-dl installed!
 ```
-sudo apt-get update
-sudo apt-get install youtube-dl
+pip3 install youtube-dl
 ```
 
 ## JSON data structure
