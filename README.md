@@ -3,6 +3,12 @@
 Launches youtube-dl commands from a JSON file.
 Built to be executed by cron to repeatedly archive entire youtube channels.
 
+Make sure you have youtube-dl installed!
+```
+sudo apt-get update
+sudo apt-get install youtube-dl
+```
+
 ## JSON data structure
 Program reads from JSON file named `channels.json` in the **same** directory as the executable.
 ```
