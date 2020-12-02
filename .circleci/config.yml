@@ -4,9 +4,13 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: debian:latest
+      - image: rust:latest
 
     steps:
+      - run:
+          name: Install Youtube-DL
+          command: sudo apt-get install youtube-dl
+      
       - run:
           name: Check formatting
           command: |
