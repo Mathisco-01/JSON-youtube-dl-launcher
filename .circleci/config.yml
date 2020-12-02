@@ -7,13 +7,14 @@ jobs:
       - image: abronan/rust-circleci:latest
 
     steps:
-#       - run:
-#           name: Install Youtube-DL
-#           command: |
-#             apt-get update
-#             apt-get install youtube-dl -y
-       - run:
-          name: Install Clippy
+      - run:
+          name: Install Youtube-DL
+          command: |
+            apt-get update
+#            apt-get install youtube-dl -y
+
+      - run:
+        name: Install Clippy
           command: |
             rustup update
             rustup component add clippy
