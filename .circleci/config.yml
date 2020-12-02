@@ -9,7 +9,7 @@ jobs:
     steps:
       - run:
           name: Install Youtube-DL
-          command: sudo apt-get install youtube-dl
+          command: apt-get install youtube-dl
       
       - run:
           name: Check formatting
