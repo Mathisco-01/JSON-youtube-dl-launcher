@@ -12,6 +12,11 @@ jobs:
 #           command: |
 #             apt-get update
 #             apt-get install youtube-dl -y
+       - run:
+          name: Install Clippy
+          command: |
+            rustup update
+            rustup component add clippy
       
       - run:
           name: Check formatting
