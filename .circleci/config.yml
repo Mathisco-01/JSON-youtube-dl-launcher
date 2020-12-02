@@ -15,9 +15,9 @@ jobs:
 
       - run:
         name: Install Clippy
-          command: |
-            rustup update
-            rustup component add clippy
+        command: |
+          rustup update
+          rustup component add clippy
       
       - run:
           name: Check formatting
