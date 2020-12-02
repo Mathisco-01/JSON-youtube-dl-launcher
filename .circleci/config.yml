@@ -16,7 +16,7 @@ jobs:
       - run:
           name: Installing Rust
           command: |
-            apt-get install curl -y
+            apt install curl -y
             curl https://sh.rustup.rs -sSf | sh
       
       - run:
