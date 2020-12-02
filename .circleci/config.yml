@@ -16,8 +16,8 @@ jobs:
       - run:
           name: Check formatting
           command: |
-            rustfmt --version
-            cargo fmt -- --write-mode=diff
+            cargo clippy --version
+            cargo clippy --verbose
         
       - run:
           name: Stable Build
